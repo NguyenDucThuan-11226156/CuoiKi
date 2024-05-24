@@ -133,3 +133,37 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
     document.querySelector(".phone-error").style.visibility = "visible";
   }
 });
+
+var byline = document.getElementById("byline");
+bylineText = byline.innerHTML;
+bylineArr = bylineText.split("");
+byline.innerHTML = "";
+
+var span;
+var letter;
+
+for (i = 0; i < bylineArr.length; i++) {
+  span = document.createElement("span");
+  letter = document.createTextNode(bylineArr[i]);
+  if (bylineArr[i] == " ") {
+    byline.appendChild(letter);
+  } else {
+    span.appendChild(letter);
+    byline.appendChild(span);
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const star = document.querySelector(".star");
+  const wars = document.querySelector(".wars");
+  const byline = document.querySelector(".byline");
+
+  const handleAnimationEnd = () => {
+    star.style.animation = "none";
+    wars.style.animation = "none";
+    byline.style.animation = "none";
+  };
+
+  star.addEventListener("animationend", handleAnimationEnd);
+  wars.addEventListener("animationend", handleAnimationEnd);
+  byline.addEventListener("animationend", handleAnimationEnd);
+});
